@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<List xmlns:ows="Microsoft SharePoint" Title="Enterprise Library SharePoint Logging List" FolderCreation="FALSE" Direction="$Resources:Direction;" Url="Lists/EntLibSPLogging-EntLibSPLoggingList" BaseType="0" xmlns="http://schemas.microsoft.com/sharepoint/">
+  <MetaData>
+    <ContentTypes>
+      <ContentType Name="EnterpriseLibraryLogEntry" ID="0x01002553797A99E2480D894C8F2862E68A53" Version="1">
+        <FieldRefs>
+          <FieldRef ID="{fa564e0f-0c70-4ab9-b863-0177e6ddd247}" Name="Title" DisplayName="Title" Required="TRUE" />
+          <FieldRef ID="{bc91a437-52e7-49e1-8c4e-4698904b2b6d}" Name="LinkTitle" DisplayName="Title" Required="TRUE" />
+          <FieldRef ID="{82642ec8-ef9b-478f-acf9-31f7d45fbc31}" Name="LinkTitleNoMenu" DisplayName="Title" Required="TRUE" />
+          <FieldRef ID="{32945BF9-AFD3-4F0C-8F5D-3ABC89271120}" Name="Severity" DisplayName="Severity" Required="TRUE"  />
+          <FieldRef ID="{7E65CB63-D6A5-4994-8C47-8E094216D2E4}" Name="Message" DisplayName="Message" Required="TRUE"  />
+          <FieldRef ID="{CE1FEB55-9024-444F-9564-785DED863E46}" Name="TimeStamp" DisplayName="TimeStamp" Required="TRUE" />
+          <FieldRef ID="{D7BAA010-E89A-4832-936B-865E4B8B32F9}" Name="ActivityId" DisplayName="Activity Id" Required="FALSE" />
+          <FieldRef ID="{40190B62-1D2F-4C7C-91A3-8D57B1552E01}" Name="ExtendedProperties" DisplayName="Extended Properties" Required="FALSE" />
+        </FieldRefs>
+      </ContentType>
+    </ContentTypes>
+    <Fields>
+      <Field ID="{fa564e0f-0c70-4ab9-b863-0177e6ddd247}" Name="Title" DisplayName="Title" Required="TRUE" Type="Text" SourceID="http://schemas.microsoft.com/sharepoint/v3" />
+      <Field ID="{bc91a437-52e7-49e1-8c4e-4698904b2b6d}" Name="LinkTitle" DisplayName="Title" Required="TRUE" Type="Text" SourceID="http://schemas.microsoft.com/sharepoint/v3" />
+      <Field ID="{82642ec8-ef9b-478f-acf9-31f7d45fbc31}" Name="LinkTitleNoMenu" DisplayName="Title" Required="TRUE" Type="Text" SourceID="http://schemas.microsoft.com/sharepoint/v3" />
+      <Field ID="{32945BF9-AFD3-4F0C-8F5D-3ABC89271120}" Name="Severity" DisplayName="Severity" Required="TRUE" Type="Choice" SourceID="http://schemas.microsoft.com/sharepoint/v3">
+        <CHOICES>
+          <CHOICE>Critical</CHOICE>
+          <CHOICE>Error</CHOICE>
+          <CHOICE>Warning</CHOICE>
+          <CHOICE>Information</CHOICE>
+          <CHOICE>Verbose</CHOICE>
+          <CHOICE>Start</CHOICE>
+          <CHOICE>Stop</CHOICE>
+          <CHOICE>Suspend</CHOICE>
+          <CHOICE>Resume</CHOICE>
+          <CHOICE>Transfer</CHOICE>
+        </CHOICES>
+        <Default>Information</Default>
+      </Field>
+      <Field ID="{7E65CB63-D6A5-4994-8C47-8E094216D2E4}" Name="Message" DisplayName="Message" Required="TRUE" Type="Note" SourceID="http://schemas.microsoft.com/sharepoint/v3" />
+      <Field ID="{CE1FEB55-9024-444F-9564-785DED863E46}" Name="TimeStamp" DisplayName="TimeStamp" Required="TRUE" Type="DateTime" SourceID="http://schemas.microsoft.com/sharepoint/v3" />
+      <Field ID="{D7BAA010-E89A-4832-936B-865E4B8B32F9}" Name="ActivityId" DisplayName="Activity Id" Required="FALSE" Type="Text" SourceID="http://schemas.microsoft.com/sharepoint/v3" />
+      <!--<Field ID="{D7BAA010-E89A-4832-936B-865E4B8B32F9}" Name="ActivityId" DisplayName="Activity Id" Required="FALSE" Type="Guid" SourceID="http://schemas.microsoft.com/sharepoint/v3" />-->
+      <Field ID="{40190B62-1D2F-4C7C-91A3-8D57B1552E01}" Name="ExtendedProperties" DisplayName="Extended Properties" Required="FALSE" Type="Note" RichText="TRUE" SourceID="http://schemas.microsoft.com/sharepoint/v3" />
+    </Fields>
+    <Views>
+      <View BaseViewID="0" Type="HTML" MobileView="TRUE" TabularView="FALSE">
+        <Toolbar Type="Standard" />
+        <XslLink Default="TRUE">main.xsl</XslLink>
+        <RowLimit Paged="TRUE">30</RowLimit>
+        <ViewFields>
+          <FieldRef Name="LinkTitleNoMenu"></FieldRef>
+        </ViewFields>
+        <Query>
+          <OrderBy>
+            <FieldRef Name="Modified" Ascending="FALSE"></FieldRef>
+          </OrderBy>
+        </Query>
+        <ParameterBindings>
+          <ParameterBinding Name="AddNewAnnouncement" Location="Resource(wss,addnewitem)" />
+          <ParameterBinding Name="NoAnnouncements" Location="Resource(wss,noXinviewofY_LIST)" />
+          <ParameterBinding Name="NoAnnouncementsHowTo" Location="Resource(wss,noXinviewofY_ONET_HOME)" />
+        </ParameterBindings>
+      </View>
+      <View BaseViewID="1" Type="HTML" WebPartZoneID="Main" DisplayName="$Resources:core,objectiv_schema_mwsidcamlidC24;" DefaultView="TRUE" MobileView="TRUE" MobileDefaultView="TRUE" SetupPath="pages\viewpage.aspx" ImageUrl="/_layouts/images/generic.png" Url="AllItems.aspx">
+        <Toolbar Type="Standard" />
+        <XslLink Default="TRUE">main.xsl</XslLink>
+        <RowLimit Paged="TRUE">30</RowLimit>
+        <ViewFields>
+          <FieldRef Name="LinkTitle"></FieldRef>
+          <FieldRef Name="Severity"></FieldRef>
+          <FieldRef Name="Message"></FieldRef>
+          <FieldRef Name="TimeStamp"></FieldRef>
+          <FieldRef Name="ActivityId"></FieldRef>
+          <FieldRef Name="ExtendedProperties"></FieldRef>
+        </ViewFields>
+        <Query>
+          <OrderBy>
+            <FieldRef Name="ID"></FieldRef>
+          </OrderBy>
+        </Query>
+        <ParameterBindings>
+          <ParameterBinding Name="NoAnnouncements" Location="Resource(wss,noXinviewofY_LIST)" />
+          <ParameterBinding Name="NoAnnouncementsHowTo" Location="Resource(wss,noXinviewofY_DEFAULT)" />
+        </ParameterBindings>
+      </View>
+    </Views>
+    <Forms>
+      <Form Type="DisplayForm" Url="DispForm.aspx" SetupPath="pages\form.aspx" WebPartZoneID="Main" />
+      <Form Type="EditForm" Url="EditForm.aspx" SetupPath="pages\form.aspx" WebPartZoneID="Main" />
+      <Form Type="NewForm" Url="NewForm.aspx" SetupPath="pages\form.aspx" WebPartZoneID="Main" />
+    </Forms>
+  </MetaData>
+</List>

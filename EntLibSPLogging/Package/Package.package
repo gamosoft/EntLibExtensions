@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="7cb1970a-b5a4-4299-83cb-cf288af10805" solutionId="7cb1970a-b5a4-4299-83cb-cf288af10805" resetWebServer="false" name="EntLibSPLogging" xmlns="http://schemas.microsoft.com/VisualStudio/2008/SharePointTools/PackageModel">
+  <features>
+    <featureReference itemId="5fbbe7dc-eb35-488f-b0d0-7057cebbeab0" />
+  </features>
+</package>
