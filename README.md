@@ -39,7 +39,7 @@ Specify your settings (mainly list name and site URL):
 
 After you log something you'll be able to see the results in the target list:
 
-![Log entries in SharePoint](./images/Home_entlib_list.png)
+![Log entries in SharePoint](./images/Home_entlib_list.PNG)
 
 ## Cache Managers
 
